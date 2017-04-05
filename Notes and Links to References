@@ -88,30 +88,21 @@ Shorw listening ports through netstat sudo netstat -plnt
 ##
 
 commands:
+exit (to exit shell)
+env (environment) with shell (when typed in bash SHELL becomes env var) Used to check for individual variables that were set,
 
-• 
-• exit (to exit shell)
-• 
-• 
-• env (environment) with shell (when typed in bash SHELL becomes env var) Used to check for individual variables that were set,
-• 
-• 
-• bash (creates new bash shell)
-• 
-• 
-• environmental vars
-• 
+bash (creates new bash shell)
+ 
+environmental vars
+ 
 
-• 
-• TZ (time zone)
-• 
-• 
-• PATH (search for path to dir or file)
-• 
-• 
-• LD_LIBRARY ( 
-• 
-• 
+ 
+TZ (time zone)
+
+PATH (search for path to dir or file)
+
+LD_LIBRARY ( 
+•
 • PS1 (primary prompt (system prompt)) can be changed, 
 • 
 • 
@@ -1168,150 +1159,81 @@ Reserved words
 • 
 • 
 • Case
-• 
-• 
-• For
-• 
-• 
-• Do
-• 
-• 
-• Done
-• 
-• 
-• Esac
-• 
-• 
+For
+Do
+Done
+Esac
 
 Operators
-
-• 
-• = (ew
-• 
-• 
-• > (gt
-• 
-• 
-• < (lt
-• 
-• 
-• >= (ge
-• 
-• 
-• != (!e
-• 
-• 
-• ABC<abc (capital letters are always  a higher value because of the asci table)
-• 
-• 
-• Example (ABC<ABc)
-• 
+= (ew
+> (gt
+< (lt
+>= (ge
+!= (!e
+ABC<abc (capital letters are always  a higher value because of the asci table)
+Example (ABC<ABc) 
 
 Conditionals (test operators) (google file operators)
 
-• 
-• -a filename (verifies file location)
-• 
-• 
-• -e filename (verifies file location)
-• 
-• 
-• -w(can you write to it) 
-• 
-• 
-• -d (is this file a dir)
-• 
-• 
-• -r (can I read this)
-• 
-• 
-• -x (can I exicute this file)
-• 
-• 
-• -z (is the file empty (zero bytes))
-•
+-a filename (verifies file location)
+-e filename (verifies file location)
+-w(can you write to it) 
+-d (is this file a dir)
+-r (can I read this)
+-x (can I exicute this file)
+-z (is the file empty (zero bytes))
 Types of loops
+While <condition may not let loop perform at all>
+For <dependent condition> (when you have a list always use for loop)
+Repeat until <condition at the end, will perform at least once then chck condition for true>
 
-• While <condition may not let loop perform at all>
-• 
-• For <dependent condition> (when you have a list always use for loop)
-• 
-• Repeat until <condition at the end, will perform at least once then chck condition for true>
-• 
 Case statements
 
-• Used for many conditional statements with many values involved
-• 
-• Example:
-• 
-• Case
-• 
-• $value
-• 
-• Conditions
-• 
-• Esac
-• 
+Used for many conditional statements with many values involved
+Example:
+Case
+$value
+Conditions
+Esac 
 
 Function
 
-• A program within a program (subtask)
-• 
-• It keeps you from repeating blocks of code over again
-• 
-• Can pass different values from different places
-• 
-• Error function example
-• 
-• 
-• err_function() {
-• 
+A program within a program (subtask)
+It keeps you from repeating blocks of code over again
+Can pass different values from different places
+Error function example
+err_function() { 
 
  Echo an error has occured
  Echoexiting script immediately
  Exit
+
 }
 
-• Example:
-• 
-• class() {
-• 
-• statement
-• 
-• }
-• 
-• Call it by the function name class
-• 
+Example:
+
+class() {
+statement
+
+}
+Call it by the function name class 
 
 Variables cont.
 Passing the variable
 
-• 
-• $0 
-• 
-• 
-• $1 (first paramater passed to script)
-• 
-• 
-• $2
-• 
-• $# (tells you how many arguments are there)
-• 
-• Script.sh argument1 arg2 arg3
-• 
-• 
-• (will show the number of variables)
-• 
+$0 
+$1 (first paramater passed to script)
+$2
+$# (tells you how many arguments are there)
+Script.sh argument1 arg2 arg3
+
+(will show the number of variables) 
 Inputting
 
-• 
-• Read (command)
-• 
-• 
-• Example:
-• 
-• Echo type something in
-• 
+Read (command)
+Example:
+Echo type something in
+
 
  Read answer
  Echo $answer
@@ -1371,91 +1293,55 @@ Security 4/20/2016
 
 File security
 
-• 
-• -rwx (world writable) (not good)
-• 
-• -r (world readable (ok)
-• 
-• Searchpath dont include the . (current directory)(unless its at the end)
-• 
-• PATH=$PATH:. (when scripting, put it at the end)
-• 
+-rwx (world writable) (not good)
+-r (world readable (ok)
+Searchpath dont include the . (current directory)(unless its at the end)
+PATH=$PATH:. (when scripting, put it at the end)
+
 ACL
 
 Group Membership
 
 Backups 
+Needed for restore
+Should be done regularly
+Not just for losing files
 
-• Needed for restore
-• 
-• Should be done regularly
-• 
-• Not just for losing files
-• 
 Logs
+/var/logs
+Lastb (shows bad loggins)
+/var/logs/messages (shows most activities of the system) (good for forensics)
+There are multiple message files because the log files get large
+Standard practice is 7 days (for live viewing)
+Configurable for how many days one log track
+Syslog.conf (can specify the log file configuration, where you want to place them, etc.)
 
-• /var/logs
-• 
-• Lastb (shows bad loggins)
-• 
-• /var/logs/messages (shows most activities of the system) (good for forensics)
-• 
-• There are multiple message files because the log files get large
-• 
-• Standard practice is 7 days (for live viewing)
-• 
-• Configurable for how many days one log track
-• 
-• Syslog.conf (can specify the log file configuration, where you want to place them, etc.)
-• 
 
 Umask (sets the file permissions by default) (all files will be created with thos permissions)
 
 Server/Client
-
-• Linux assumes the install is a client by default
-• 
-• Other services/applications need to be installed
-• 
-• Special configuration should be made for security
+Linux assumes the install is a client by default
+Other services/applications need to be installed
+Special configuration should be made for security
 
 Telnet/SSH (secure shell)
-
-• Telnet is clear text
-• 
-• SSH is encrypted
-
-• Sshv2 protocol 2
-• 
-• 
-• Sshd_conf (specifies the ssh rules) (review before configuring ss 
-• 
+Telnet is clear text
+SSH is encrypted
+Sshv2 protocol 2
+Sshd_conf (specifies the ssh rules) (review before configuring ss  
 
 TCP wrappers (method of wrapping applications)
 
-• 
-• etc/allow
-• 
-• 
-• etc/deny
-• 
-• 
-• Inetd (inet deamon) (tells system to listen on port and what program will run on it)
-• 
+etc/allow
+etc/deny
+Inetd (inet deamon) (tells system to listen on port and what program will run on it) 
+(is not used anymore)
 
-• 
-• (is not used anymore)
-• 
 
 Iptables command
+Configuration file to filter traffic
+Iptables -A INPUT -s 192.168.217.32 -J DROP (to block input)
 
-• 
-• Configuration file to filter traffic
-• 
-• 
-• Iptables -A INPUT -s 192.168.217.32 -J DROP (to block input)
-• 
-• 
 
 
 
@@ -1477,30 +1363,14 @@ What file to use to find port numbers for certain applications
 
 NTP - network time protocol
 
-• 
-• Set up in hierachy of time srouces
-• 
+Set up in hierachy of time srouces
+Statum0 - broadcasts from atomic/radio sources
+Stratum1 - next step down
+Stratum2 - next step down
+Works from a time source
+Commands
+Ntpq -p (checks NTP server)
 
-• 
-• Statum0 - broadcasts from atomic/radio sources
-• 
-• 
-• Stratum1 - next step down
-• 
-• 
-• Stratum2 - next step down
-• 
-• 
-• Works from a time source
-• 
-• 
-• Commands
-• 
-
-• 
-• Ntpq -p (checks NTP server)
-• 
-• 
 
 
 
@@ -1515,243 +1385,102 @@ HW address - MAC address
 
 Networking Commands
 
-• 
-• Ip 
-• 
+Ip 
+Addr
+Version
+Batch
+Force
+-stats
+Loops
+Family
+Resolve
 
-• 
-• Addr
-• 
-• 
-• Version
-• 
-• 
-• Batch
-• 
-• 
-• Force
-• 
-• 
-• -stats
-• 
-• 
-• Loops
-• 
-• 
-• Family
-• 
-• 
-• Resolve
-• 
-• 
-• Nmcli
-• 
+Nmcli
+C (lowercase) (for connection)
+Up ens32
+Down
+Modify (for manual non-dhcp config)
+Ens32 ipv4.address 192.168.217.43
+Ens32 ipv4.gateway 192.168.217.1
+Ens32 ipv4.dns 192.168.190.252
+Ens32 ipv4.method manual
+Service network start (root mode)
+Service network restart (root mode)
+Ping
+Ifconfig
+Modprobe tulip (loads network hardware driver)
 
-• 
-• C (lowercase) (for connection)
-• 
-
-• 
-• Up ens32
-• 
-• 
-• Down
-• 
-• 
-• Modify (for manual non-dhcp config)
-• 
-
-• 
-• Ens32 ipv4.address 192.168.217.43
-• 
-• 
-• Ens32 ipv4.gateway 192.168.217.1
-• 
-• 
-• Ens32 ipv4.dns 192.168.190.252
-• 
-• 
-• Ens32 ipv4.method manual
-• 
-• 
-• Service network start (root mode)
-• 
-• 
-• Service network restart (root mode)
-• 
-• 
-• Ping
-• 
-• 
-• Ifconfig
-• 
-• 
-• Modprobe tulip (loads network hardware driver)
-• 
-• 
-• Netstat
-• 
-
-• 
-• -a (active
-• 
-• 
-• -nr (routing table) (default gateway etc.)
-• 
-• 
-• -r ( routing table
-• 
-• 
-• | grep ssh (shows ssh listening ports
-• 
-• 
-• 
-• Route
-• 
-
-• 
-• Add default gw x.x.x.x
-• 
-• 
-• Ifup
-• 
-
-• 
-• Eth0
-• 
-• 
-• Traceroute
-• 
-• • Tcpdump
-• 
-• 
-• Ftp speaker
-• 
-• 
-• Telnet speaker
-• 
-• 
-• Nslookup
-• 
-
-• -g=mx (shows all ips registered for this domain
-• 
-• 
-• Ssh user@ipaddress
-• 
-• 
-• Tcpdump (examines raw network traffic
-• 
+Netstat
+-a (active
+-nr (routing table) (default gateway etc.)
+-r ( routing table
+ 
+ | grep ssh (shows ssh listening ports
+Route
+Add default gw x.x.x.x
+Ifup
+Eth0
+Traceroute
+Tcpdump
+Ftp speaker
+Telnet speaker
+Nslookup
+-g=mx (shows all ips registered for this domain
+Ssh user@ipaddress
+Tcpdump (examines raw network traffic
 
 Inet = IP address
 Loopback 
 DHCP
 Files
 
+/etc/networks (specifies device, networking, dhcp, onboot)
+/etc/hosts (specifies localhosts)
+/etc/services (specifies registered ports)
+/etc/sysconfig/network
 
-• 
-• /etc/networks (specifies device, networking, dhcp, onboot)
-• 
-• 
-• /etc/hosts (specifies localhosts)
-• 
-• 
-• /etc/services (specifies registered ports)
-• 
-• 
-• /etc/sysconfig/network
-• 
-•
 Repositories
 
-• Yum (centOS repo) , search, install package
-• 
-• Apt-get
-• 
+Yum (centOS repo) , search, install package
+Apt-get
+ 
 Setting up DHCP:
 
-• 
-• Check config file (networks)to see if you have DHCP if not copy the one from server1
-• 
-• Bring the device up with: nmcli -c up ens32
-• 
+Check config file (networks)to see if you have DHCP if not copy the one from server1
+Bring the device up with: nmcli -c up ens32 
 Commands:
-
-• 
-• systemctl (controls services and targets) (p 262)
-• 
-• 
-• systemctl stop ssh.srvice (stops service)
-• 
-• 
+systemctl (controls services and targets) (p 262)
+systemctl stop ssh.srvice (stops service)
 
 
 USER MANAGEMENT
 Passwd file
-
-• 
-• world readable
-• 
-• 
-• No visible password
-• 
+world readable
+No visible password
 
 Shadow file
-
-• 
-• No password visible
-• 
-• 
-• Only root readable
-• 
+No password visible
+Only root readable
 
 User commands
-
-• 
-• UID - Unique Identification - 
-• 
-
-• 
-• -g (gid) group id (can only have one)
-• 
-• 
-• -G (supplementary groups)  
-• 
-• 
-• Usermod - change a user id
-• 
-• 
-• Usermod 
-• 
-
-• 
-• -u (changes user id)
-• 
-• 
-• No one should have a user id below the first made user i.e. UID 1000
-• 
-• 
+UID - Unique Identification - 
+-g (gid) group id (can only have one)
+-G (supplementary groups)  
+Usermod - change a user id
+Usermod 
+-u (changes user id)
+No one should have a user id below the first made user i.e. UID 1000
+ 
 
 Chmod g+s /home/shared
 
 NIS (Network Information Services) OLD & Unencrypted
 
-• 
-• Master
-• 
-
-• 
-• Client1 -server
-• 
-• 
-• Client2 -server
-• 
-• 
-• Client3 -server
-• 
-• 
-• Client4 -server
-• 
+Master
+Client1 -server
+Client2 -server
+Client3 -server
+Client4 -server 
 
 LDAP & Active Directory are used instead of NIS now
 
@@ -1759,38 +1488,24 @@ Logging
 
 Systemd-journald components
 
-• 
-• Deamon
-• 
-• 
-• Config file
-• 
-• 
-• Search utility
-• 
+Deamon
+Config file
+Search utility
 
 Example of log rotation
 
-• 
-• Syslog moves from syslog > syslog.0 > syslog.1 > syslog.2
-• 
-• 
-• Older syslogs i.e. over 10 days might be removed unless backed up
-• 
+Syslog moves from syslog > syslog.0 > syslog.1 > syslog.2
+Older syslogs i.e. over 10 days might be removed unless backed up
+
 
 CRON (cronology) - Utility Scheduler
 2 Types of systems
 
-• 
-• One for system
-• 
-• One for users
-• 
-• Crontab (a table)  (every entry has the same format)
-• 
-• 
-• Separated by commas to set time and date of logging
-• 
+ 
+One for system 
+One for users
+Crontab (a table)  (every entry has the same format)
+Separated by commas to set time and date of logging 
 
 Minute
 Hour
@@ -1818,165 +1533,70 @@ Never edit crontab outside of crontab
 
 Command: crontab
 
-• syntax
-• 
-• Crontab [-u user] [-l] [ -e] [-r] [file]
-• 
-• -l lists current user c
-• 
-• -e edits
-• 
-• -r removes
-• 
-• CHANGE crontab default editor to vim!!!
-• 
-• * * * * * will create a constante cronjob
-• 
-Directory permissions
+syntax
+Crontab [-u user] [-l] [ -e] [-r] [file]
+-l lists current user c
+-e edits
+-r removes
+CHANGE crontab default editor to vim!!!
 
-• 
-• must have have executable permissions in order to go to the directory
-• 
+* * * * * will create a constante cronjob
+
+Directory permissions
+must have have executable permissions in order to go to the directory
 
 TAR Commands (tape archive)
-
-• 
-• Syntax
-• 
-
-• 
-• tar -tvf example.tar <-output file (list of files)
-• 
-• 
-• tar tvf example.tar
-• 
-• 
-• tar cvf ~/example.tar . (outputs to the home dir)
-• 
-• 
-• tar -xvf example.tar -c target/directory (extracts to target)
-• 
-
-• 
-• c -create
-• 
-• 
-• x - extract
-• 
-• 
-• t -list whats in archive
-• 
-• 
-• -z --gzip --gunzip --ungzip
-• 
-• 
-• -Z --compress --uncompress
-• 
-• 
-• v -verbose
-• 
-• 
-• f -file 
-• 
+Syntax
+tar -tvf example.tar <-output file (list of files)
+tar tvf example.tar
+tar cvf ~/example.tar . (outputs to the home dir)
+tar -xvf example.tar -c target/directory (extracts to target)
+c -create
+x - extract
+t -list whats in archive
+-z --gzip --gunzip --ungzip
+-Z --compress --uncompress
+v -verbose
+f -file 
 
 dd command
+very fast copying
+will transfer bad sectors from disk
 
-• 
-• very fast copying
-• 
-• 
-• will transfer bad sectors from disk
-• 
-
-• 
-• dd if=/from/here of=/to/here
-• 
+dd if=/from/here of=/to/here
 
 
 Users
+cat /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+ANY uid of 0 will have root privileges !!!!!!!!!!!!!!!!1
+user:password:userid(uid):groupid(gpd):common field:/homedir:shell
+cat /etc/shadow (the real password file)
+vipw 
+getent 
+Getent shadow username
+Getent passwd username
+Getent group groupname
+Getent group username
 
-• 
-• cat /etc/passwd
-• 
-
-• 
-• 
-• 
-• root:x:0:0:root:/root:/bin/bash
-• 
-• 
-• ANY uid of 0 will have root privileges !!!!!!!!!!!!!!!!1
-• 
-• 
-• user:password:userid(uid):groupid(gpd):common field:/homedir:shell
-• 
-• 
-• cat /etc/shadow (the real password file)
-• 
-• 
-• vipw 
-• 
-• 
-• getent 
-• 
-
-• 
-• Getent shadow username
-• 
-• 
-• Getent passwd username
-• 
-• 
-• Getent group groupname
-• 
-• 
-• Getent group username
-• 
-• 
 
 Modify Users
-
-• 
-• usermod -c (description) useraccount -l (change username) etc.
-• 
-• 
-• userdel (removes user) -r (recursive) useraccount
-• 
+usermod -c (description) useraccount -l (change username) etc.
+userdel (removes user) -r (recursive) useraccount
 
 Groups
-command 
 
-• 
-• groupadd -g (custom gid) -r (system group)
-• 
+groupadd -g (custom gid) -r (system group)
+groupmod -A (adds user) -R (removes user) -n (changes name of group)
+groupdel (deletes group)
+gpasswd (change group password)
+newgrp (log into new group)
+groups (displays groups)
+File /etc/groups or with fedora /etc/gshadow
+group:password:GID:users
 
-• 
-• groupmod -A (adds user) -R (removes user) -n (changes name of group)
-• 
-• 
-• groupdel (deletes group)
-• 
-• 
-• gpasswd (change group password)
-• 
-• 
-• newgrp (log into new group)
-• 
-• 
-• groups (displays groups)
-• 
-
-• 
-• File /etc/groups or with fedora /etc/gshadow
-• 
-• 
-• group:password:GID:users
-• 
-• 
-• for configuring values for groups /etc/login.defs 
-• 
-• 
-• /etc/skel - configuration templates for new users home directory
-• 
+for configuring values for groups /etc/login.defs 
+/etc/skel - configuration templates for new users home directory
+ 
 
 
