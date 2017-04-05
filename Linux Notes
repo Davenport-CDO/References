@@ -1,0 +1,1598 @@
+Incident Response links
+https://zeltser.com/security-incident-survey-cheat-sheet/
+https://www.cst.ucf.edu/wp-content/uploads/infosec/Procedure_for_Unix_Incident_Response.pdf
+https://www.symantec.com/connect/articles/incident-response-tools-unix-part-one-system-tools
+https://wiki.egi.eu/wiki/Forensic_Howto
+https://www.blackhat.com/presentations/bh-usa-03/bh-us-03-willis-c/bh-us-03-willis.pdf
+https://www.amazon.com/Linux-Forensics-Dr-Philip-Polstra/dp/1515037630/
+http://www.pentesteracademy.com/course?id=20
+
+https://staff.washington.edu/dittrich/misc/forensics/
+
+Email server tutorial
+https://www.digitalocean.com/community/tutorials/how-to-set-up-a-postfix-e-mail-server-with-dovecot
+
+
+Forensics:
+Version 
+cat /etc/debian_version
+Apt-get install lsb-release
+Lsb_release -a
+Last
+Who -a
+W
+users
+find -user will > -action -exec chown who whom 
+Cat /etc/shadow
+Pwck
+Groups
+Tcpdump
+Nslookup
+Cat /etc/services
+Cat /etc/ssh/ssh_config
+Mail
+Hostname
+Hostname -f
+Cat /etc/hosts
+Cat /etc/postfix/main.cf
+Cat /etc/postfix/master.cf
+Ps -ef | grep postfix
+Ps -ef | grep
+Cat /var/mail.log
+Apt-get install lsof
+Cat /etc/resolv.conf
+##
+##Password commands
+
+Linux password check command - pwck
+linux password synchronize command - pwconv
+
+Install
+Apt-get install lsof
+Apt-get install nano
+Apt-get install lsb-release
+Apt-get install netstat
+Debian mirrors for /etc/apt/sources.list 
+https://www.debian.org/mirror/list
+ftp.us.debian.org/debian/
+
+Stopping cups from running/disableing it
+
+# systemctl disable cups.service 
+# systemctl stop cups.service
+systemctl stop cups.socket cups.path cups.service
+systemctl status cups.service
+systemctl list-units | grep cups
+
+
+##############
+#####Scanning Commands####
+
+nmap scans for new connections
+
+ping scan nmap -sn 10.10.1.0-255
+
+tcmp syn ping nmap -PS(port#) 10.10.1.0-255
+
+arp ping scan nmap -PR 10.10.1.0-255
+
+intense scan on targets -T4 -A -v 10.10.1.1 10.10.1.101 etc.
+
+Show thee listening ports on localhost -sT -O localhost 
+
+report linked port to it's active service lsof -i | grep 834 (non nmap)
+
+Shorw listening ports through netstat sudo netstat -plnt 
+
+##
+
+commands:
+exit (to exit shell)
+env (environment) with shell (when typed in bash SHELL becomes env var) Used to check for individual variables that were set,
+
+bash (creates new bash shell)
+
+environmental vars
+
+
+
+TZ (time zone)
+
+PATH (search for path to dir or file)
+
+LD_LIBRARY ( 
+
+PS1 (primary prompt (system prompt)) can be changed, 
+
+
+PS2 (secondary prompt)
+
+
+
+Unix 
+
+
+created 3 abstract for data streams
+
+
+
+stdin (standard input) - for linux represented by 0
+
+
+stdout (standard output) - for linux represented by 1
+
+
+stderr (standard error) - for linux represented by 2
+
+
+example of use 2 >&1 to redirect stderr to stdout
+Unix likes numbers
+
+Linux Utility Command
+
+
+| (pipe) has 2 ends, input and output, pipe input to output commands 
+
+
+example to find last fridays logs (grep string | grep string | more) 
+
+
+#####LINUX vi EDITOR COMMANDS#####
+
+
+vi input fn
+
+vi input !fn if its not created yet
+
+vi input fn will look in relative path to create unless explicit
+
+single character commands
+
+i (insert command) puts you into insert mode
+ esc (escape key) to get out of input mode
+a (append) leaves out sting example:
+
+x (deletes character)
+
+p (pastes)
+dw (deleted word)
+dd (deletes whole line) 
+2dd (deletes 2 lines)
+u (undo) undoes last command or commands
+
+r (replace) replaces character over cursor 
+ cw  (preplace word) where cursor is at will delete every character from that spot to the end of the word
+
+dw (delete word) removes word from cursor but is not in input mode , can cut and past
+: (makes filed for linux command within file)
+q (quit) 
+q! (quit without saving changes)
+w (write to file /save without quitting)
+:wq (quit and save) 
+ZZ (quit and save)
+l (moves cursor one char to the left)
+h (moves cursor one char to the right)
+j (moves char one line below)
+k (one line above)
+0 (brings cursor to first char on line)
+$ (moves cursor to end of liane)
+d$ (deletes to the end of line)
+1G (goes to first line of file)
+G (goes to bottom)
+dg (deletes everything from cursor to end of file)
+/ input (search string) search for input
+n (next string) from where cursor is at
+ (backward search)
+
+n (next string) from where cursor is at
+
+
+ (backward search)
+
+#############################
+LS commands
+
+ls gives listing by name 
+
+ls -l (long listing) long listing of file type, size, time-stamp, owner etc.
+
+Ls -file* 123 (searches for file starting with file and ending with 123)
+
+###File system notes###
+Metacharacters . .. / (all have special meanings) 
+cannot be used in a file name, / \ (  * () ~ |  < > { }[ ] $
+
+Metacharacter
+Description
+
+UNIX interprets a space as a separator not as a character.
+*
+A wild card character that matches any group of characters of any length, allowing a user to specify a large group of items with a short string. For example, to specify all the files that start with 'abc', you use abc*.
+?
+A wild card character that matches any single character. Thus ls ??? lists files in the current directory whose names are only three characters long, while ls ???.* lists those files with a three letter main name and any extension.
+[..]
+A set of characters that can be matched. Thus ls [a-c]*.??? lists all files that begin with a, b, or c and have a three letter extension and lpr [ad]* prints all files that begin with a or d.
+$
+Indicates that the following text is the name of a shell (environment) variable whose value is to be used.
+|
+Separates commands to form a pipe (see redirection in Intermediate Use Of The UNIX Operating System).
+<
+Redirect the standard input (see redirection in Intermediate Use Of The UNIX Operating System).
+>
+Redirect the standard output (see redirection in Intermediate Use Of The UNIX Operating System) to replace current contents.
+>>
+Redirect the standard output (see redirection in Intermediate Use Of The UNIX Operating System) to append to current contents.
+>&
+Redirect the standard output and standard error (see redirection in Intermediate Use Of The UNIX Operating System) to replace current contents.
+>>&
+Redirect the standard output an standard error (see redirection in Intermediate Use Of The UNIX Operating System) to append to current contents.
+%
+Introduces a job name (see multitasking in Intermediate Use Of The UNIX Operating System).
+&
+Place a process into the background (see multitasking in Intermediate Use Of The UNIX Operating System).
+()
+Encloses a sequence of commands or pipes to be executed as a single command.
+!
+Precedes a history substitution (see man history)
+;
+Separates sequences of commands (or pipes) that are on one line.
+&&
+Separates two sequences of commands or pipes the second of which is executed only if the first succeeds.
+||
+Separates two sequences of commands or pipes the second of which is executed only if the first fails.
+\
+Used to quote the following metacharacter so it is treated as a plain character, as in \*.
+./ (current 
+../ (parent
+~ (home directory
+` (back tick) (is for use when inputting a command in between) 
+* (star) can be used as a wild card none or many, example ls *.conf will list all .conf , *.* lists everything, Example: abc*abc out put to abcabc OR abc1234abc BUT NOT abccba
+ (single quotes) considered to be literal or only that
+typing  expects another  (will need another quote to end the command)
+
+
+(double quotes) Can include variables within them, 
+example  this is a $FN sends exactly that
+if $FN == ABC
+example this is a $FN will print this is a ABC
+\ (escape) escaping \$ 
+? (one / one) one and one only, Example: ab?abc to abcabc, NOT ab1abc to abcdabc
+! (Bang) means not or negates if it does not exit it will create it 
+# (
+File System Layout
+etc 
+home
+/root
+/tmp
+/bin 
+
+
+
+
+
+Commands:
+
+
+su  (switch user)
+
+
+su - user profile  
+
+
+id (shows user id)
+• 
+134
+
+
+whoami (shows active user)
+
+
+sudo (superuser do)
+
+
+chmod (change file permissions
+
+
+which ls (shows location of lscommand)
+
+
+touch fn (creates empty file w/username and group) 
+
+
+
+-rw-rw-r--  1 will will     0 Jan 27 17:29 file1 
+
+
+
+- (regular file) 
+
+
+rw- (read write exicute)
+
+
+first 3 bits belong to user
+
+
+second 3 bits belong to group
+
+
+last 3 bits indicate permission to others
+
+
+will (id) will (group) ™ (time stamp) 0 (file size) file1 (fn)
+
+
+
+
+
+-rwsr-xr-x 1 root root 51224 Jul 21  2015 passwd
+
+
+OCTO SYSTEM
+
+
+8 bit system
+
+
+read from right to left
+
+
+if a bit is turned on it has the value of 2 to the power of that location
+
+
+total value is 255
+
+
+file permissions having 3 bits (rwx) has value of 7
+
+
+(r--) = 4 (rw-) = 6
+
+
+
+example -rwx r-x--x
+
+
+chmod 777 passwd (sets to full permissions on all 3)
+
+
+chmod o+rw passwd (set others access)
+
+
+PATH (search path variable) 
+
+
+PATH variables can be add/subtracted
+
+
+All variables are in upper case
+
+
+
+example: PATH=$PATH:/home
+
+
+env | grep PATH (searches for variable PATH)
+
+
+echo $PS1 (shell path example: will@Alexiares:~$)
+
+
+absolute paths example /tmp/psw2
+
+
+relative path example: from ~ /tmp/psw2
+
+
+multiple commands cmd1; cmd2; cmd3;
+
+
+
+
+FOR HOMEWORK ASSIGNMENT:
+
+
+script showme.txt (captures commands and output of shell)
+
+
+do reading and man pages before the script so he does nto have to read it
+
+
+history file contains all commands typed
+
+
+LAB 2/3/2016
+
+chmod 
+
+
+there are actually 4 digits for file permissions
+
+
+linux always assumes that the first is set to 0
+
+
+if (-rwsr) then set suid is set, whoever runs the program will assume the privileges of root
+
+
+passwd = password changing program
+
+
+NEVER SET THE UID BIT ON A SCRIPT FILE
+
+ commands
+
+chmod u+s passwd (to change suid for owner)
+
+
+chmod 4771 passwd (numerical way to change suid of owner)
+
+
+umask to check touch bit config
+
+
+chmod assumes 0 if you dont specify 4 digits
+
+
+when linux creates a file it starts with 777 then checks permissions on umask to set the appropriate ones
+
+
+Always set the appropriate bits for files.
+
+
+Dont set execute on text files unless you want to run them as a script
+
+
+commands
+
+
+
+SYNTAX chown owner:group fn
+
+
+ln (link) hard link or soft link (symbolic link)
+
+
+
+hard link (duplicat) Gets file permissions of original file
+
+
+soft link (symbolic link or pointer) Does not get file permission inheritance
+
+
+SYNTAX ln fn1 fn2
+
+
+ln fn1 echo hello fn2
+
+
+ln -s /etc/hosts fn1 (sets a link to hosts with different permissions)
+
+
+(hard link) Modification of original file is reflected in the link file
+
+File Systems
+
+
+A and B can have soft copies between them with different permissions 
+
+
+Hard links can not be created across file systems
+
+
+Hard link files must reside within same file system
+
+
+Symbolic links do not have that restriction
+
+
+inode = data structure (scalar) (are associated with files)
+
+
+data structures have different fields which holds data
+
+
+inodes are searched with ls command
+
+
+inodes are sets of data which the filesystem pulls from
+
+
+inodes are a collection of data for files (permissions, user, group, others, owners, timestamp, file type, file name
+
+
+file systems save space for every inode
+
+
+EVERY FILE IS ASSOCIATED WITH ONLY 1 INODE REGARDLESS OF SIZE
+
+
+LINK FILES DONT TAKE UP AN inode
+
+
+You cant create a symbolic linked file across different file systems because the inode for the linked file is unique within each file system
+
+Commands to learn for homework WEEK 4
+
+
+find (utility)
+
+find , searches for files starting from root
+
+find arguments, -name *.conf , 
+
+SYNTAX find /etc -name *.conf 
+
+
+SYNTAX find /etc -name *.conf -exec ls -l {} \; (this provides a long listing of the output
+
+
+find / -mtime +7 (finds every file made before 7 days ago)
+
+
+find /etc -name *.conf chmod {} \; (finds files with what permissions?)
+
+
+$ whoami user1 $ su - user2 Password: $ whoami user2 $ exit logout
+
+
+Create a User as root
+
+
+useradd -d /home/pearson pearson
+
+
+password <userid>
+
+
+/etc/skel - configuration templates for new users home directory
+
+#Security / IP Tables
+
+Security 4/20/2016
+
+File security
+
+
+-rwx (world writable) (not good)
+
+
+-r (world readable (ok)
+
+
+Searchpath dont include the . (current directory)(unless its at the end)
+
+
+PATH=$PATH:. (when scripting, put it at the end)
+
+
+
+ACL
+
+Group Membership
+
+Backups 
+
+
+Needed for restore
+
+
+Should be done regularly
+
+
+Not just for losing files
+
+
+Logs
+
+
+/var/logs
+
+Lastb (shows bad loggins)
+
+
+/var/logs/messages (shows most activities of the system) (good for forensics)
+
+
+There are multiple message files because the log files get large
+
+Standard practice is 7 days (for live viewing)
+
+Configurable for how many days one log track
+
+
+Syslog.conf (can specify the log file configuration, where you want to place them, etc.)
+
+
+Umask (sets the file permissions by default) (all files will be created with thos permissions)
+
+Server/Client
+
+Sshv2 protocol 2
+
+Sshd_conf (specifies the ssh rules) (review before configuring ss 
+
+TCP wrappers (method of wrapping applications)
+
+etc/allow
+
+etc/deny
+
+Inetd (inet deamon) (tells system to listen on port and what program will run on it)
+(is not used anymore)
+
+
+Iptables command
+
+
+Configuration file to filter traffic
+
+
+Iptables -A INPUT -s 192.168.217.32 -J DROP (to block input)
+
+
+
+memorize
+Syntaxes for loop - for <something>
+  Do
+  Anything
+  Done
+
+do loop, if then loop, 
+
+####
+
+LAB 3/30/2016
+
+ACL set on critical systems
+
+IPTable
+
+
+Economic firewall packeged into linux
+
+
+Set up filters for traffic
+
+
+Protocols
+
+
+Telnet - 23
+
+
+Ftp - 21, data - 20
+
+
+Date - 13
+
+
+Echo - 7
+
+
+Scp - 22
+
+
+Sftp - 22
+
+
+Sshv2 - 22
+
+
+
+Netstat -a | grep ssh (will search active ssh connections)
+
+
+Provides Key authentication
+
+
+/home/will/ssh/known_hosts (fingerprint of remote server)
+
+
+Ssh allows key authentication to verify client/server
+
+
+Fingerprint must be reset if ssh is migrated to another machine
+
+
+When logging in yes/no is 
+
+
+Key Authentication
+Private key - only yours
+Public key - shared
+
+
+User A
+User B
+User C
+xyz/P1
+123/2
+ABC/P3
+
+
+
+
+
+
+
+
+Server X
+Pub/Private Key
+
+Private Key Security - Only user has read/write access to it
+
+
+Permission 600
+
+
+SSH Commands
+
+
+Scp (copy files within ssh) (can only do one command with, cannot change directory within)
+
+
+
+1. Ssh-keygen (generates public private key)
+
+
+
+Rsa - defaults unless specified
+
+
+Dsa - specify with dsa 
+
+
+2. Remote server needs the public key
+
+
+3. Ssh-copy-id Will@192.168.217.20(copies the public key to the remote users home directory)
+
+
+
+Example: /home/will/remote.host
+
+
+Will be in /home/will/.ssh/authorized_keys
+
+
+Cat  id_rsa.pub >> authorized_keys (sends the public key to authorized key file)
+
+
+SFTP Commands (file manipulation commands)
+
+
+Help / ? 
+
+
+Put an L in front of commands for local file system
+
+
+Put (upload)
+
+
+Get (download)
+
+
+Mput 
+
+
+Mget
+
+
+Quit (get out)
+
+
+
+LOGS
+
+
+/var/log (stores logs)
+
+
+Need to be root to view
+
+
+PROJECT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! DUE BY THE 20th
+
+
+
+Partition (2 partitions one 25 mg, one 50mg)
+
+
+Make a file system
+
+
+Create mnt points (mount point z:, x:, etc. is a directory)
+
+
+Mount file sys over mount point
+
+
+Describe why Im using the 2 file system types (advantages and disadvantages of the 2 file systems) (make it logical)
+
+
+PROJECT NOTES
+
+
+/dev
+
+
+Sda2 (the disk to be used)
+
+
+Fdisk
+
+
+Fdisk /dev/hda
+
+
+Partprobe /dev/sda
+
+
+Mkfs
+
+
+Mkfs.ext4 /dev/hda#
+
+
+Df -h (current partitions)
+
+
+Mount /dev/sda3 /FS1
+
+
+Vi /etc/fstab (setup persistante mount of new file system)
+
+
+Pvm
+
+
+Reduce2fs
+
+
+Lvreduce -L -200M /dev/sda2/home (reduces it by 200)
+
+
+Vgs
+
+
+Partprobe /dev/sda
+
+
+PROJECT NOTES
+/dev/sda or /dev/hda?
+Sda2 (the disk to be used)
+Fdisk
+Fdisk /dev/hda
+Partprobe /dev/sda
+Mkfs
+Mkfs.ext4 /dev/hda#
+Df -h
+Mount /dev/hda# /mnt
+Vi /etc/fstab (setup persistante mount of new file system)
+
+
+
+
+Networking Continued
+
+/etc/hosts file
+
+
+Add ip & hosts to resolve hosts automatically
+
+
+
+
+DNS
+
+
+Forward lookup
+
+
+Reverse lookup
+
+
+
+
+SMTP
+
+
+Most popular email protocol
+
+
+Used for Server to server connections
+
+
+IMAP
+
+
+For retrieving mail (KEEPS copy on server)
+
+
+Requires a lot of overhread (space, etc.)
+
+
+POP3
+
+
+For retrieving mail (does not keep copy on the server)
+
+
+Does not require overhead
+
+
+Databases 
+
+
+Oracle
+
+
+SQL
+
+
+
+Both use tables
+
+
+Both are relational
+
+
+
+Postfix
+
+Lotus
+
+
+
+
+
+
+SCRIPTING (continued)
+
+Scripting is prefered because
+
+
+You can read startup scripts
+
+
+Automation (crontab jobs)
+
+
+SHELLs
+
+
+Bash
+
+
+Csh
+
+
+Ksh
+
+
+Sh
+
+
+
+
+
+Header
+
+
+For bash - #!bin/bash 
+
+
+For sh - #!bin/sh
+
+
+Run files with 
+
+
+Sh
+
+
+./filename (after making it executable)
+
+
+PATH=$PATH:. (add this then type filename) (works because of the . at the end)
+
+
+PATH=.:$PATH (DONT DO THIS) (Never add .: before path)
+
+
+
+
+Interpretive - line by line
+Compiled - binary format
+
+Exit - at and of script to stop it
+
+Variables
+
+
+P.456
+
+
+Store values
+
+
+
+Remember no spaces when assigning variables
+
+
+Strings
+
+
+Numbers (int, long, dec)
+
+
+Boolean
+
+
+Variables (a variable within a variable)
+
+
+Date
+
+
+
++%A, 
+
+
+Profile environment customizationfiles
+/home/.bashrc
+/home/.bash_profile
+
+= (does not mean equal, it means assigned)
+Case sensative
+$ (only used when calling a variable, example: $ball)
+(need to be used when making statements, example: This is $ball == This is 1)
+(if echoed types out what is inside of it)
+`example` (told to treat the input as a command)
+[something] (testing being done)
+
+
+
+
+
+Conditional statements
+
+
+Statement 1 Example: True or false
+
+
+Can only compare 2 variables at the same time
+
+
+If [thing] 
+
+
+
+Then
+
+
+ Fi
+
+
+statement 2Example: if [condition]
+
+
+
+Then
+
+
+Stuff
+
+
+Else 
+
+
+Stuff
+
+
+Fi
+
+
+
+
+Examples:
+
+
+While true
+
+
+
+do 
+
+
+Date
+
+
+done
+
+
+Num`ls | wc -l`
+
+
+
+HOMEWORK 4/6/2016 for 4/13/2016
+Read scripting chapter, practice statements
+
+
+
+
+LAB 4/13/2016
+
+Scripting cont.
+Syntax
+
+
+filename=assign1 (valid statement)
+
+
+Statements can be within statements
+
+
+Always look for indentations for statement conditions (if/then statements with conditions)
+
+
+Comparisons are done with operators
+
+
+
+Reserved words
+
+
+If <condition>
+
+
+Then
+
+
+Else
+
+
+Fi
+
+
+Case
+For
+Do
+Done
+Esac
+
+Operators
+= (ew
+> (gt
+< (lt
+>= (ge
+!= (!e
+ABC<abc (capital letters are always  a higher value because of the asci table)
+Example (ABC<ABc) 
+
+Conditionals (test operators) (google file operators)
+
+-a filename (verifies file location)
+-e filename (verifies file location)
+-w(can you write to it) 
+-d (is this file a dir)
+-r (can I read this)
+-x (can I exicute this file)
+-z (is the file empty (zero bytes))
+Types of loops
+While <condition may not let loop perform at all>
+For <dependent condition> (when you have a list always use for loop)
+Repeat until <condition at the end, will perform at least once then chck condition for true>
+
+Case statements
+
+Used for many conditional statements with many values involved
+Example:
+Case
+$value
+Conditions
+Esac 
+
+Function
+
+A program within a program (subtask)
+It keeps you from repeating blocks of code over again
+Can pass different values from different places
+Error function example
+err_function() { 
+
+Echo an error has occured
+Echoexiting script immediately
+Exit
+
+}
+
+Example:
+
+class() {
+statement
+
+}
+Call it by the function name class 
+
+Variables cont.
+Passing the variable
+
+$0 
+$1 (first paramater passed to script)
+$2
+$# (tells you how many arguments are there)
+Script.sh argument1 arg2 arg3
+
+(will show the number of variables) 
+Inputting
+
+Read (command)
+Example:
+Echo type something in
+
+
+Read answer
+Echo $answer
+
+Statements
+
+For fn in `ls`
+Do
+ Echo file name is $fn
+ 
+Done
+________________________________________
+list=something
+For fn in $list
+Do
+ Echo file name is $fn
+Done
+__________________________________
+
+Repeat
+Do
+ 
+
+Until <condition>
+
+
+
+
+Practice script
+
+Dir = `ls`
+If [-d $fdirtest]
+ Then
+  Echo This is a directory
+ Else
+  Echo This is not a directory
+Done
+
+________________________________________________________
+WORKING DIRECTORY TEST
+
+For filetest in `ls`
+do 
+ If [ -d $filetest ] 
+  Then
+   Echo $filetest is a directory
+  else 
+   Echo $filetest  is not a directory
+ Fi
+Done
+__________________________________________________________
+
+
+
+
+Security 4/20/2016
+
+File security
+
+-rwx (world writable) (not good)
+-r (world readable (ok)
+Searchpath dont include the . (current directory)(unless its at the end)
+PATH=$PATH:. (when scripting, put it at the end)
+
+ACL
+
+Group Membership
+
+Backups 
+Needed for restore
+Should be done regularly
+Not just for losing files
+
+Logs
+/var/logs
+Lastb (shows bad loggins)
+/var/logs/messages (shows most activities of the system) (good for forensics)
+There are multiple message files because the log files get large
+Standard practice is 7 days (for live viewing)
+Configurable for how many days one log track
+Syslog.conf (can specify the log file configuration, where you want to place them, etc.)
+
+
+Umask (sets the file permissions by default) (all files will be created with thos permissions)
+
+Server/Client
+Linux assumes the install is a client by default
+Other services/applications need to be installed
+Special configuration should be made for security
+
+Telnet/SSH (secure shell)
+Telnet is clear text
+SSH is encrypted
+Sshv2 protocol 2
+Sshd_conf (specifies the ssh rules) (review before configuring ss  
+
+TCP wrappers (method of wrapping applications)
+
+etc/allow
+etc/deny
+Inetd (inet deamon) (tells system to listen on port and what program will run on it) 
+(is not used anymore)
+
+
+Iptables command
+Configuration file to filter traffic
+Iptables -A INPUT -s 192.168.217.32 -J DROP (to block input)
+
+
+
+
+Exam-very similar to midterm, open book, study midterm, do multiple choices from the book.
+
+memorize
+Syntaxes for loop - for <something>
+  Do
+  Anything
+  Done
+
+do loop, if then loop, 
+For syntaxes 
+
+Commands covered in class, activate nic, find out ip address, 
+File management, 
+Network
+What file to use to find port numbers for certain applications
+
+NTP - network time protocol
+
+Set up in hierachy of time srouces
+Statum0 - broadcasts from atomic/radio sources
+Stratum1 - next step down
+Stratum2 - next step down
+Works from a time source
+Commands
+Ntpq -p (checks NTP server)
+
+
+
+
+
+TCP - Connected (3 way handshake)
+UDP - Connectionless 
+
+
+
+HW address - MAC address 
+
+
+Networking Commands
+
+Ip 
+Addr
+Version
+Batch
+Force
+-stats
+Loops
+Family
+Resolve
+
+Nmcli
+C (lowercase) (for connection)
+Up ens32
+Down
+Modify (for manual non-dhcp config)
+Ens32 ipv4.address 192.168.217.43
+Ens32 ipv4.gateway 192.168.217.1
+Ens32 ipv4.dns 192.168.190.252
+Ens32 ipv4.method manual
+Service network start (root mode)
+Service network restart (root mode)
+Ping
+Ifconfig
+Modprobe tulip (loads network hardware driver)
+
+Netstat
+-a (active
+-nr (routing table) (default gateway etc.)
+-r ( routing table
+
+| grep ssh (shows ssh listening ports
+Route
+Add default gw x.x.x.x
+Ifup
+Eth0
+Traceroute
+Tcpdump
+Ftp speaker
+Telnet speaker
+Nslookup
+-g=mx (shows all ips registered for this domain
+Ssh user@ipaddress
+Tcpdump (examines raw network traffic
+
+Inet = IP address
+Loopback 
+DHCP
+Files
+
+/etc/networks (specifies device, networking, dhcp, onboot)
+/etc/hosts (specifies localhosts)
+/etc/services (specifies registered ports)
+/etc/sysconfig/network
+
+Repositories
+
+Yum (centOS repo) , search, install package
+Apt-get
+
+Setting up DHCP:
+
+Check config file (networks)to see if you have DHCP if not copy the one from server1
+Bring the device up with: nmcli -c up ens32 
+Commands:
+systemctl (controls services and targets) (p 262)
+systemctl stop ssh.srvice (stops service)
+
+
+USER MANAGEMENT
+Passwd file
+world readable
+No visible password
+
+Shadow file
+No password visible
+Only root readable
+
+User commands
+UID - Unique Identification - 
+-g (gid) group id (can only have one)
+-G (supplementary groups)  
+Usermod - change a user id
+Usermod 
+-u (changes user id)
+No one should have a user id below the first made user i.e. UID 1000
+
+
+Chmod g+s /home/shared
+
+NIS (Network Information Services) OLD & Unencrypted
+
+Master
+Client1 -server
+Client2 -server
+Client3 -server
+Client4 -server 
+
+LDAP & Active Directory are used instead of NIS now
+
+Logging
+
+Systemd-journald components
+
+Deamon
+Config file
+Search utility
+
+Example of log rotation
+
+Syslog moves from syslog > syslog.0 > syslog.1 > syslog.2
+Older syslogs i.e. over 10 days might be removed unless backed up
+
+
+CRON (cronology) - Utility Scheduler
+2 Types of systems
+
+
+One for system 
+One for users
+Crontab (a table)  (every entry has the same format)
+Separated by commas to set time and date of logging 
+
+Minute
+Hour
+Day
+Month
+Day of Week
+0-59
+0-23
+1-31
+1-12
+0-7
+5,45
+1,3,5
+1,2,3
+1,2,3
+0,1,2
+5,10,15
+
+2,4,6
+2,4,6
+
+
+Never edit crontab outside of crontab
+
+
+Command: crontab
+
+syntax
+Crontab [-u user] [-l] [ -e] [-r] [file]
+-l lists current user c
+-e edits
+-r removes
+CHANGE crontab default editor to vim!!!
+
+* * * * * will create a constante cronjob
+
+Directory permissions
+must have have executable permissions in order to go to the directory
+
+TAR Commands (tape archive)
+Syntax
+tar -tvf example.tar <-output file (list of files)
+tar tvf example.tar
+tar cvf ~/example.tar . (outputs to the home dir)
+tar -xvf example.tar -c target/directory (extracts to target)
+c -create
+x - extract
+t -list whats in archive
+-z --gzip --gunzip --ungzip
+-Z --compress --uncompress
+v -verbose
+f -file 
+
+dd command
+very fast copying
+will transfer bad sectors from disk
+
+dd if=/from/here of=/to/here
+
+
+Users
+cat /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+ANY uid of 0 will have root privileges !!!!!!!!!!!!!!!!1
+user:password:userid(uid):groupid(gpd):common field:/homedir:shell
+cat /etc/shadow (the real password file)
+vipw 
+getent 
+Getent shadow username
+Getent passwd username
+Getent group groupname
+Getent group username
+
+
+Modify Users
+usermod -c (description) useraccount -l (change username) etc.
+userdel (removes user) -r (recursive) useraccount
+
+Groups
+
+groupadd -g (custom gid) -r (system group)
+groupmod -A (adds user) -R (removes user) -n (changes name of group)
+groupdel (deletes group)
+gpasswd (change group password)
+newgrp (log into new group)
+groups (displays groups)
+File /etc/groups or with fedora /etc/gshadow
+group:password:GID:users
+
+for configuring values for groups /etc/login.defs 
+/etc/skel - configuration templates for new users home directory
